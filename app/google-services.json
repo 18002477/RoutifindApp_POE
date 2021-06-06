@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "793570053897",
+    "project_id": "routifindapp-62fd3",
+    "storage_bucket": "routifindapp-62fd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793570053897:android:714c217b07b564aa21cdd8",
+        "android_client_info": {
+          "package_name": "com.spartans.routifindapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793570053897-0aml97e1iha3t83apqu6ug292s6liapa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spartans.routifindapp",
+            "certificate_hash": "208de0b8464bfd8dfde38181df1cc3e509ff7ac4"
+          }
+        },
+        {
+          "client_id": "793570053897-memkme9583d60ib7uiu09vte8oteigac.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmu-LAAoGtt4aig5X3JnoOhdF4uAuI8VY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793570053897-memkme9583d60ib7uiu09vte8oteigac.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
