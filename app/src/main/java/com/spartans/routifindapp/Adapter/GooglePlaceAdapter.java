@@ -11,14 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.spartans.routifindapp.GooglePlaceModel;
 import com.spartans.routifindapp.NearLocationInterface;
 import com.spartans.routifindapp.R;
+import com.spartans.routifindapp.databinding.PlaceItemLayoutBinding;
 
 
 import java.util.List;
 
-/*public class GooglePlaceAdapter extends RecyclerView.Adapter<GooglePlaceAdapter.ViewHolder>
+public class GooglePlaceAdapter extends RecyclerView.Adapter<GooglePlaceAdapter.ViewHolder>
 {
+
     private List<GooglePlaceModel> googlePlaceModels;
     private NearLocationInterface nearLocationInterface;
+
+    public GooglePlaceAdapter(NearLocationInterface nearLocationInterface) {
+        this.nearLocationInterface = nearLocationInterface;
+    }
 
     @NonNull
     @Override
@@ -30,10 +36,12 @@ import java.util.List;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         if (googlePlaceModels != null) {
             GooglePlaceModel placeModel = googlePlaceModels.get(position);
             holder.binding.setGooglePlaceModel(placeModel);
             holder.binding.setListener(nearLocationInterface);
+
         }
     }
 
@@ -45,7 +53,13 @@ import java.util.List;
             return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void setGooglePlaceModels(List<GooglePlaceModel> googlePlaceModels) {
+        this.googlePlaceModels = googlePlaceModels;
+        notifyDataSetChanged();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
         private PlaceItemLayoutBinding binding;
 
         public ViewHolder(@NonNull PlaceItemLayoutBinding binding) {
@@ -53,4 +67,4 @@ import java.util.List;
             this.binding = binding;
         }
     }
-}*/
+}

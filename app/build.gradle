@@ -87,6 +87,8 @@ dependencies {
 
     // Permissions
     implementation 'com.karumi:dexter:6.2.2'
+    // Firebase UI
+    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
 
 
