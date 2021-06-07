@@ -248,9 +248,16 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
 
     }
 
-    @SuppressWarnings("deprecation")
+   /* @SuppressWarnings("deprecation")
     private void requestLocation() {
         requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, AllConstant.LOCATION_REQUEST_CODE);
+    }*/
+
+    @SuppressWarnings("deprecation")
+    private void requestLocation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, AllConstant.LOCATION_REQUEST_CODE);
+        }
     }
 
     @SuppressWarnings("deprecation")
@@ -523,7 +530,7 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
     {
         if (userSavedLocationId.contains(googlePlaceModel.getPlaceId())) {
             new AlertDialog.Builder(requireContext())
-                    .setTitle("Remove Place")
+                    .setTitle("Remove Landmark")
                     .setMessage("Are you sure to remove this place?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
@@ -579,7 +586,7 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
         googlePlaceModelList.get(index).setSaved(false);
         googlePlaceAdapter.notifyDataSetChanged();
 
-        Snackbar.make(binding.getRoot(), "Place removed", Snackbar.LENGTH_LONG)
+        Snackbar.make(binding.getRoot(), "Landmark removed", Snackbar.LENGTH_LONG)
                 .setAction("Undo", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -603,7 +610,7 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
     {
         userSavedLocationId.add(placeId);
         userLocationReference.setValue(userSavedLocationId);
-        Snackbar.make(binding.getRoot(), "Place Saved", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(binding.getRoot(), "Landmark Saved", Snackbar.LENGTH_LONG).show();
     }
 
     private void saveLocation(SavedPlaceModel savedPlaceModel)

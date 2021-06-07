@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoutifindApp">
         <activity android:name=".Activity.DirectionActivity"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/ActionBarTheme"/>
         <activity android:name=".Activity.ForgetActivity" />
         <activity android:name=".Activity.SignUpActivity" />
         <activity android:name=".Activity.LoginActivity" />
