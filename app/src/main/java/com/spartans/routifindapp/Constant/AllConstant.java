@@ -1,12 +1,18 @@
 package com.spartans.routifindapp.Constant;
 
+import com.spartans.routifindapp.PlaceModel;
+import com.spartans.routifindapp.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public interface AllConstant
 {
     int STORAGE_REQUEST_CODE = 1000;
     int LOCATION_REQUEST_CODE = 2000;
     String IMAGE_PATH = "/Profile/image_profile.jpg";
 
-   /* ArrayList<PlaceModel> placesName = new ArrayList<>(
+    ArrayList<PlaceModel> placesName = new ArrayList<>(
             Arrays.asList(
                     new PlaceModel(1, R.drawable.ic_restaurant, "Restaurant", "restaurant"),
                     new PlaceModel(2, R.drawable.ic_atm, "ATM", "atm"),
@@ -19,5 +25,5 @@ public interface AllConstant
                     new PlaceModel(9, R.drawable.ic_saloon, "Beauty Salons", "beauty_salon")
 
             )
-    );*/
+    );
 }

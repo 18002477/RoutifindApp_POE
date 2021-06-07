@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.spartans.routifindapp.Activity.LoginActivity;
 import com.spartans.routifindapp.Constant.AllConstant;
 import com.spartans.routifindapp.Permissions.AppPermissions;
 import com.spartans.routifindapp.R;
@@ -97,6 +98,15 @@ public class SettingsFragment extends Fragment {
 
             Navigation.findNavController(requireView()).navigate(directions);
 
+        });
+
+        binding.cardLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                Toast.makeText(getContext(), "Sign Out Successful ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+            }
         });
 
 

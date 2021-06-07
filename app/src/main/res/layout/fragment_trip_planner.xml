@@ -45,7 +45,7 @@
                     android:id="@+id/edtCPassword"
                     android:layout_width="match_parent"
                     android:layout_height="182dp"
-                    android:inputType="textPassword"
+                    android:inputType="textMultiLine"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>

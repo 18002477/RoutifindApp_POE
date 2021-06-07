@@ -85,6 +85,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.2.2'
     implementation 'androidx.navigation:navigation-ui:2.2.2'
 
+    // Permissions
+    implementation 'com.karumi:dexter:6.2.2'
+
 
 
 
