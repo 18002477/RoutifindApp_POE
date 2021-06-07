@@ -1,5 +1,6 @@
 package com.spartans.routifindapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.spartans.routifindapp.Activity.DirectionActivity;
 import com.spartans.routifindapp.R;
 import com.spartans.routifindapp.SavedLocationInterface;
 import com.spartans.routifindapp.SavedPlaceModel;
@@ -125,8 +127,19 @@ public class SavedPlacesFragment extends Fragment implements SavedLocationInterf
     }
 
     @Override
-    public void onLocationClick(SavedPlaceModel savedPlaceModel) {
-        Toast.makeText(getContext(), "Place Clicked", Toast.LENGTH_SHORT).show();
+    public void onLocationClick(SavedPlaceModel savedPlaceModel)
+    {
+        if (savedPlaceModel.getLat() != null && savedPlaceModel.getLng() != null) {
+            Intent intent = new Intent(requireContext(), DirectionActivity.class);
+            intent.putExtra("placeId", savedPlaceModel.getPlaceId());
+            intent.putExtra("lat", savedPlaceModel.getLat());
+            intent.putExtra("lng", savedPlaceModel.getLng());
+
+            startActivity(intent);
+
+        } else {
+            Toast.makeText(requireContext(), "Location Not Found", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

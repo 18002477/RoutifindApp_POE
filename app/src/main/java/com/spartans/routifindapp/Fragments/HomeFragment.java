@@ -10,13 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -27,7 +24,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.os.Looper;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,17 +60,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
+import com.spartans.routifindapp.Activity.DirectionActivity;
 import com.spartans.routifindapp.Adapter.GooglePlaceAdapter;
 import com.spartans.routifindapp.Adapter.InfoWindowAdapter;
 import com.spartans.routifindapp.Constant.AllConstant;
 import com.spartans.routifindapp.GooglePlaceModel;
-import com.spartans.routifindapp.Model.GoogleResponseModel;
+import com.spartans.routifindapp.Model.GooglePlaceModel.GoogleResponseModel;
 import com.spartans.routifindapp.NearLocationInterface;
 import com.spartans.routifindapp.Permissions.AppPermissions;
 import com.spartans.routifindapp.PlaceModel;
@@ -622,7 +613,16 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
     @Override
     public void onDirectionClick(GooglePlaceModel googlePlaceModel)
     {
-        Toast.makeText(getContext(), "Direction Clicked", Toast.LENGTH_SHORT).show();
+        String placeId = googlePlaceModel.getPlaceId();
+        Double lat = googlePlaceModel.getGeometry().getLocation().getLat();
+        Double lng = googlePlaceModel.getGeometry().getLocation().getLng();
+
+        Intent intent = new Intent(requireContext(), DirectionActivity.class);
+        intent.putExtra("placeId", placeId);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lng", lng);
+
+        startActivity(intent);
     }
 
     private void getUserSavedLocations() {

@@ -42,7 +42,7 @@
                 android:drawableStart="@drawable/ic_location"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/primaryColor"
-                android:hint="Search Place"
+                android:hint="Search Landmark"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColorHint="@color/itemTextColor"

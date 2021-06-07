@@ -1,4 +1,4 @@
-package com.spartans.routifindapp.Model;
+package com.spartans.routifindapp.Model.GooglePlaceModel;
 
 import android.widget.ImageView;
 

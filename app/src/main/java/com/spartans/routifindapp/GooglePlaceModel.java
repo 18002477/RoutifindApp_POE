@@ -2,8 +2,8 @@ package com.spartans.routifindapp;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.spartans.routifindapp.Model.GeometryModel;
-import com.spartans.routifindapp.Model.PhotoModel;
+import com.spartans.routifindapp.Model.GooglePlaceModel.GeometryModel;
+import com.spartans.routifindapp.Model.GooglePlaceModel.PhotoModel;
 
 import java.util.List;
 

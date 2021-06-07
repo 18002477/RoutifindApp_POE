@@ -1,4 +1,4 @@
-package com.spartans.routifindapp.Model;
+package com.spartans.routifindapp.Model.GooglePlaceModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

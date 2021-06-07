@@ -1,14 +1,13 @@
-package com.spartans.routifindapp.Model;
+package com.spartans.routifindapp.Model.DirectionPlaceModel;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LocationModel
+public class StartLocationModel
 {
     @SerializedName("lat")
     @Expose
     private Double lat;
-
     @SerializedName("lng")
     @Expose
     private Double lng;
