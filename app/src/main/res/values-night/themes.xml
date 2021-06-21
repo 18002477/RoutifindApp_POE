@@ -19,5 +19,4 @@
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/primaryColor</item>
         <!-- Customize your theme here. -->
     </style>
-
 </resources>
