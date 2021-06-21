@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -33,6 +35,8 @@ import com.spartans.routifindapp.databinding.ActivitySignUpBinding;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.IOException;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private ActivitySignUpBinding binding;
@@ -41,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
     private LoadingDialog loadingDialog;
     private String email, username, password;
     private StorageReference storageReference;
-    public static final int PICK_CODE = 104;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +85,48 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void pickImage()
     {
-        CropImage.activity()
-                .setCropShape(CropImageView.CropShape.OVAL)
-                .start(this);
+        Intent chooseImage = new Intent(Intent.ACTION_GET_CONTENT);
+        chooseImage.setType("image/*");
+        startActivityForResult(Intent.createChooser(chooseImage,"Pick an image"),AllConstant.PICK_CODE);
+//        CropImage.activity()
+//                .setCropShape(CropImageView.CropShape.OVAL)
+//                .start(this);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == AllConstant.PICK_CODE && data != null)
+        {
+
+            try
+            {
+                imageUri = data.getData();
+            }
+            catch (Exception ex)
+            {
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            Glide.with(this).load(imageUri).into(binding.imgPick);
+        }
+    }
+
+/*    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                imageUri = result.getUri();
+                Glide.with(this).load(imageUri).into(binding.imgPick);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception exception = result.getError();
+                Log.d("TAG", "onActivityResult: " + exception);
+            }
+        }
+    }*/
+
 
     private boolean areFieldReady() {
         username = binding.edtUsername.getText().toString().trim();
@@ -203,7 +244,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+/*    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -216,7 +257,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.d("TAG", "onActivityResult: " + exception);
             }
         }
-    }
+    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

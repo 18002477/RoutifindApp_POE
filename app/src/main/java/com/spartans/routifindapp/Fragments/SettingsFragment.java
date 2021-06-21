@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +46,7 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.spartans.routifindapp.Fragments.SettingsFragmentDirections;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,11 +116,41 @@ public class SettingsFragment extends Fragment {
         return binding.getRoot();
     }
 
+//    private void pickImage()
+//    {
+//        CropImage.activity()
+//                .setCropShape(CropImageView.CropShape.OVAL)
+//                .start(getContext(), this);
+//    }
+
     private void pickImage()
     {
-        CropImage.activity()
-                .setCropShape(CropImageView.CropShape.OVAL)
-                .start(getContext(), this);
+        Intent chooseImage = new Intent(Intent.ACTION_GET_CONTENT);
+        chooseImage.setType("image/*");
+        startActivityForResult(Intent.createChooser(chooseImage,"Pick an image"),AllConstant.PICK_CODE);
+//        CropImage.activity()
+//                .setCropShape(CropImageView.CropShape.OVAL)
+//                .start(getContext(), this);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == AllConstant.PICK_CODE && data != null)
+        {
+            try
+            {
+                imageUri = data.getData();
+            }
+            catch (Exception ex)
+            {
+                Toast.makeText(getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            Glide.with(this).load(imageUri).into(binding.imgProfile);
+            uploadImage(imageUri);
+            //binding.imgPick.setImageBitmap(imageToStore);
+        }
     }
 
     @Override
@@ -166,7 +199,7 @@ public class SettingsFragment extends Fragment {
     }
 
     @SuppressWarnings("deprecation")
-    @Override
+/*    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
@@ -180,7 +213,7 @@ public class SettingsFragment extends Fragment {
                 Toast.makeText(getContext(), "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 
     private void uploadImage(Uri imageUri)
     {
