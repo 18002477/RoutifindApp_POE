@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_btnSetting_to_emailConfirmationFragment"
             app:destination="@id/emailConfirmationFragment" />
+        <action
+            android:id="@+id/action_btnSetting_to_distanceUnitsFragment"
+            app:destination="@id/distanceUnitsFragment" />
     </fragment>
     <fragment
         android:id="@+id/btnSavedPlaces"
@@ -62,4 +65,9 @@
         android:name="com.spartans.routifindapp.Fragments.PasswordChangeFragment"
         android:label="fragment_password_change"
         tools:layout="@layout/fragment_password_change" />
+    <fragment
+        android:id="@+id/distanceUnitsFragment"
+        android:name="com.spartans.routifindapp.Fragments.DistanceUnitsFragment"
+        android:label="fragment_distance_units"
+        tools:layout="@layout/fragment_distance_units" />
 </navigation>

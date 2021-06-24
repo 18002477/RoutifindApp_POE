@@ -74,7 +74,7 @@
                     android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="asdgahsyd"
+                    android:text="Starting location"
                     android:textColor="@color/quantum_black_text"
                     android:textStyle="bold"
                     android:layout_alignLeft="@id/txtStartLbl" />
@@ -118,7 +118,7 @@
                     android:layout_marginTop="10dp"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="asdgahsyd"
+                    android:text="Destination Location"
                     android:textColor="@color/quantum_black_text"
                     android:textStyle="bold"
                     android:layout_alignLeft="@id/txtEndLbl" />

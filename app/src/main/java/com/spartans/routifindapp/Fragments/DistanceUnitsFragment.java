@@ -9,15 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.spartans.routifindapp.R;
-import com.spartans.routifindapp.databinding.ActivityDirectionBinding;
+import com.spartans.routifindapp.databinding.FragmentDistanceUnitsBinding;
+import com.spartans.routifindapp.databinding.FragmentHomeBinding;
 import com.spartans.routifindapp.databinding.FragmentSettingsBinding;
-import com.spartans.routifindapp.databinding.FragmentTripPlannerBinding;
 
-public class TripPlannerFragment extends Fragment {
+public class DistanceUnitsFragment extends Fragment {
 
-    private FragmentTripPlannerBinding binding;
+    private FragmentDistanceUnitsBinding binding;
 
-    public TripPlannerFragment()
+    public DistanceUnitsFragment()
     {
         // Required empty public constructor
     }
@@ -27,7 +27,7 @@ public class TripPlannerFragment extends Fragment {
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        binding = FragmentTripPlannerBinding.inflate(getLayoutInflater());
+        binding = FragmentDistanceUnitsBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }

@@ -477,7 +477,7 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
     private BitmapDescriptor getCustomIcon()
     {
         Drawable background = ContextCompat.getDrawable(requireContext(), R.drawable.ic_location);
-        background.setTint(getResources().getColor(R.color.quantum_googred900, null));
+        background.setTint(getResources().getColor(R.color.quantum_googredA700, null));
         background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());
         Bitmap bitmap = Bitmap.createBitmap(background.getIntrinsicWidth(), background.getIntrinsicHeight(),
                 Bitmap.Config.ARGB_8888);

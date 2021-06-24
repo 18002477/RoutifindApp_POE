@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
@@ -103,6 +105,16 @@ public class SettingsFragment extends Fragment {
 
         });
 
+        binding.cardDistanceUnits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                // Add some Code
+                Navigation.findNavController(requireView()).navigate( SettingsFragmentDirections.actionBtnSettingToDistanceUnitsFragment());
+
+            }
+        });
+
         binding.cardLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,6 +144,7 @@ public class SettingsFragment extends Fragment {
 //                .setCropShape(CropImageView.CropShape.OVAL)
 //                .start(getContext(), this);
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)

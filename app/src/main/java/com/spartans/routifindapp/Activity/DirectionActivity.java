@@ -144,6 +144,7 @@ public class DirectionActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
+    // Building the url for the two locations requested by the user
     private void getDirection(String mode) {
 
         if (isLocationPermissionOk) {
@@ -193,7 +194,7 @@ public class DirectionActivity extends AppCompatActivity implements OnMapReadyCa
 
                                 PolylineOptions options = new PolylineOptions()
                                         .width(25)
-                                        .color(Color.BLUE)
+                                        .color(Color.CYAN)
                                         .geodesic(true)
                                         .clickable(true)
                                         .visible(true);
@@ -203,7 +204,7 @@ public class DirectionActivity extends AppCompatActivity implements OnMapReadyCa
                                     pattern = Arrays.asList(
                                             new Dot(), new Gap(10));
 
-                                    options.jointType(JointType.ROUND);
+                                    options.jointType(JointType.DEFAULT);
                                 } else {
                                     pattern = Arrays.asList(
                                             new Dash(30));
@@ -250,6 +251,7 @@ public class DirectionActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
+    // Drawing the route from the two user requested locations using google maps model
     private List<com.google.maps.model.LatLng> decode(String points) {
 
         int len = points.length();

@@ -193,6 +193,46 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardDistanceUnits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    app:cardElevation="6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:paddingTop="25dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="25dp">
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:text="Distance Units"
+                            android:textColor="@color/itemTextColor"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            app:drawableStartCompat="@drawable/ic_distance_settings"
+                            app:drawableTint="@color/primaryColor" />
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_next"
+                            app:tint="@color/primaryColor"
+                            android:layout_alignParentRight="true" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardLogout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
