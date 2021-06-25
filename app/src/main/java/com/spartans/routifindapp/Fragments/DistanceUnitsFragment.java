@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.spartans.routifindapp.R;
+import com.spartans.routifindapp.Utility.LoadingDialog;
 import com.spartans.routifindapp.databinding.FragmentDistanceUnitsBinding;
 import com.spartans.routifindapp.databinding.FragmentHomeBinding;
 import com.spartans.routifindapp.databinding.FragmentSettingsBinding;
@@ -16,6 +17,7 @@ import com.spartans.routifindapp.databinding.FragmentSettingsBinding;
 public class DistanceUnitsFragment extends Fragment {
 
     private FragmentDistanceUnitsBinding binding;
+    private LoadingDialog loadingDialog;
 
     public DistanceUnitsFragment()
     {
@@ -28,6 +30,8 @@ public class DistanceUnitsFragment extends Fragment {
     {
         // Inflate the layout for this fragment
         binding = FragmentDistanceUnitsBinding.inflate(inflater, container, false);
+        loadingDialog = new LoadingDialog(getActivity());
+
 
         return binding.getRoot();
     }
