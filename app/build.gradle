@@ -100,8 +100,6 @@ dependencies {
     // Recycle View
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    // Background Riple
-    implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
 
 
