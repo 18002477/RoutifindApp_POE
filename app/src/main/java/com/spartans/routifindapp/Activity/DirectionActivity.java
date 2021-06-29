@@ -8,11 +8,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -50,9 +57,12 @@ import com.spartans.routifindapp.WebServices.RetrofitClient;
 import com.spartans.routifindapp.databinding.ActivityDirectionBinding;
 import com.spartans.routifindapp.databinding.BottomSheetLayoutBinding;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -142,7 +152,86 @@ public class DirectionActivity extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+       /* binding.shareLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                String url = "https://maps.googleapis.com/maps/api/directions/json?" +
+                        "origin=" + currentLocation.getLatitude() + "," + currentLocation.getLongitude() +
+                        "&destination=" + endLat + "," + endLng +
+                        "&key=" + getResources().getString(R.string.API_KEY);
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String Body = "Share Location";
+                String Sub = url;
+                intent.putExtra(Intent.EXTRA_TEXT, Body);
+                intent.putExtra(Intent.EXTRA_TEXT,Sub);
+                startActivity(Intent.createChooser(intent,"Share using"));
+            }
+        });*/
+
+        binding.shareLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                shareLocationImage();
+            }
+        });
+
     }
+
+    public void shareLocationImage()
+    {
+        View view =  findViewById(R.id.directionsLayout);//your layout id
+        view.getRootView();
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state))
+        {
+            File picDir  = new File(Environment.getExternalStorageDirectory()+ "/myPic");
+            if (!picDir.exists())
+            {
+                picDir.mkdir();
+            }
+            view.setDrawingCacheEnabled(true);
+            view.buildDrawingCache(true);
+            Bitmap bitmap = view.getDrawingCache();
+//          Date date = new Date();
+            String fileName = "location" + ".jpg";
+            File picFile = new File(picDir + "/" + fileName);
+            try
+            {
+                picFile.createNewFile();
+                FileOutputStream picOut = new FileOutputStream(picFile);
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), (int)(bitmap.getHeight()/1.2));
+                boolean saved = bitmap.compress(Bitmap.CompressFormat.JPEG, 100, picOut);
+                if (saved)
+                {
+                    Toast.makeText(getApplicationContext(), "Image saved to your device Pictures "+ "directory!", Toast.LENGTH_SHORT).show();
+                } else
+                {
+                    Toast.makeText(this, "Unable to store image", Toast.LENGTH_SHORT).show();
+                }
+                picOut.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            view.destroyDrawingCache();
+
+            // share via intent
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("image/jpeg");
+            sharingIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(picFile.getAbsolutePath()));
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+        } else {
+            Toast.makeText(this, "Unable to share", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 
     // Building the url for the two locations requested by the user
     private void getDirection(String mode) {

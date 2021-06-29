@@ -32,25 +32,17 @@
             android:padding="20dp">
 
             <RadioGroup
+                android:id="@+id/rg_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/radAutomatic"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Automatic"
-                    android:layout_marginTop="10dp"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/itemTextColor"/>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radKilometers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kilometers (Km)"
+                    android:text="Km"
                     android:layout_marginTop="10dp"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -60,7 +52,7 @@
                     android:id="@+id/radMiles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Miles (M)"
+                    android:text="Miles"
                     android:layout_marginTop="10dp"
                     android:textSize="20dp"
                     android:textStyle="bold"

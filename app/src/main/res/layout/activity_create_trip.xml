@@ -21,7 +21,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:hint="Enter your trip title here"
+            android:hint="Enter your destination"
             android:id="@+id/createtitleoftrip" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -33,7 +33,7 @@
         android:background="#faf7f7"
         android:gravity="top|left"
         android:textColor="@color/black"
-        android:hint="Enter your trip content here"
+        android:hint="Create your itinerary"
         android:layout_below="@id/toolbarofcreatetrip"
         android:padding="15dp"
         android:id="@+id/createcontentoftrip">
@@ -59,25 +59,16 @@
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:id="@+id/progressbarofcreatetrip"
-        android:layout_marginTop="10dp">
 
-    </ProgressBar>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="538dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <FrameLayout
             android:id="@+id/load_tripPlannerPlaceHolder"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 

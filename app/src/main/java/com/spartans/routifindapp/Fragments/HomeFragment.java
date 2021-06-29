@@ -353,21 +353,28 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
 
     private void moveCameraToLocation(Location location)
     {
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new
-                LatLng(location.getLatitude(), location.getLongitude()), 17);
+        try
+        {
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new
+                    LatLng(location.getLatitude(), location.getLongitude()), 17);
 
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                .title("Current Location")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                .snippet(firebaseAuth.getCurrentUser().getDisplayName());
+            MarkerOptions markerOptions = new MarkerOptions()
+                    .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                    .title("Current Location")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    .snippet(firebaseAuth.getCurrentUser().getDisplayName());
 
-        if (currentMarker != null) {
-            currentMarker.remove();
+            if (currentMarker != null) {
+                currentMarker.remove();
+            }
+            currentMarker = mGoogleMap.addMarker(markerOptions);
+            currentMarker.setTag(703);
+            mGoogleMap.animateCamera(cameraUpdate);
+
+        }catch (Exception ex)
+        {
+            Toast.makeText(getContext(), "No internet connection !", Toast.LENGTH_SHORT).show();
         }
-        currentMarker = mGoogleMap.addMarker(markerOptions);
-        currentMarker.setTag(703);
-        mGoogleMap.animateCamera(cameraUpdate);
 
     }
 

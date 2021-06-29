@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/directionsLayout"
     app:layout_behavior="@string/bottom_sheet_behavior"
     tools:context=".Activity.DirectionActivity">
 
@@ -28,6 +29,18 @@
         app:backgroundTint="@color/white"
         app:fabCustomSize="40dp"
         app:tint="@color/itemTextColor"
+        android:layout_marginRight="15dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shareLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:src="@drawable/ic_baseline_share_24"
+        app:backgroundTint="@color/primaryColor"
+        app:fabCustomSize="40dp"
+        app:tint="@color/white"
+        android:layout_marginTop="110dp"
         android:layout_marginRight="15dp" />
 
     <LinearLayout

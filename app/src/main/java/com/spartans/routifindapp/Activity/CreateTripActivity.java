@@ -34,6 +34,7 @@ public class CreateTripActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private FirebaseFirestore firebaseFirestore;
+    private Toolbar toolbar;
 
     private LoadingDialog loadingDialog;
 
@@ -47,8 +48,8 @@ public class CreateTripActivity extends AppCompatActivity {
         mCreateTitleOfTrip=findViewById(R.id.createtitleoftrip);
 
         loadingDialog = new LoadingDialog(this);
-        // Check this toolbar, Back button not working
-        Toolbar toolbar=findViewById(R.id.toolbarofcreatetrip);
+
+        toolbar=findViewById(R.id.toolbarofcreatetrip);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -106,5 +107,18 @@ public class CreateTripActivity extends AppCompatActivity {
                 }
             }
         });
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+                Fragment mFragment = null;
+                mFragment = new TripPlannerFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.load_tripPlannerPlaceHolder, mFragment).commit();
+            }
+        });
     }
+
 }

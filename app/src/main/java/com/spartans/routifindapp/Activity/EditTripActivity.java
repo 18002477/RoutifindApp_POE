@@ -34,6 +34,7 @@ public class EditTripActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseUser firebaseUser;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,8 @@ public class EditTripActivity extends AppCompatActivity {
 
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-        // Back button not working
-        Toolbar toolbar=findViewById(R.id.toolbarofedittrip);
+
+        toolbar=findViewById(R.id.toolbarofedittrip);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -96,5 +97,17 @@ public class EditTripActivity extends AppCompatActivity {
         String tripContent=data.getStringExtra("content");
         mEditContentOfTrip.setText(tripContent);
         mEditTitleOfTrip.setText(tripTitle);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                finish();
+                Fragment mFragment = null;
+                mFragment = new TripPlannerFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.loadFromEdit_PlaceHolder, mFragment).commit();
+            }
+        });
     }
 }
