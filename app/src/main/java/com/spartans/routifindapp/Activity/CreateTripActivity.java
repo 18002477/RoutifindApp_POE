@@ -76,6 +76,7 @@ public class CreateTripActivity extends AppCompatActivity {
                     trip.put("title",title);
                     trip.put("content",content);
 
+                    loadingDialog.stopLoading();
                     documentReference.set(trip).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -85,8 +86,6 @@ public class CreateTripActivity extends AppCompatActivity {
                             mFragment = new TripPlannerFragment();
                             FragmentManager fragmentManager = getSupportFragmentManager();
                             fragmentManager.beginTransaction().replace(R.id.load_tripPlannerPlaceHolder, mFragment).commit();
-
-
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {

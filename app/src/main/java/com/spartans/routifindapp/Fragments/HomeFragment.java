@@ -253,12 +253,6 @@ GoogleMap.OnMarkerClickListener, NearLocationInterface {
         requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, AllConstant.LOCATION_REQUEST_CODE);
     }
 
-  /*  @SuppressWarnings("deprecation")
-    private void requestLocation() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, AllConstant.LOCATION_REQUEST_CODE);
-        }
-    }*/
 
     @SuppressWarnings("deprecation")
     @Override

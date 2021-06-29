@@ -37,7 +37,6 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
     DecimalFormat df = new DecimalFormat("#.#");
 
 
-
     public InfoWindowAdapter(Location location, Context context) {
         this.location = location;
         this.context = context;
@@ -54,13 +53,13 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
         DocumentReference documentReference=firebaseFirestore.collection("settings").document(firebaseUser.getUid()).collection("mySettings").document(firebaseUser.getUid());
+        binding.txtLocationName.setText(marker.getTitle());
 
         // Retrieving the measurement units value from Firestore database
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot)
             {
-                binding.txtLocationName.setText(marker.getTitle());
                 double distance = SphericalUtil.computeDistanceBetween(new LatLng(location.getLatitude(), location.getLongitude()),
                         marker.getPosition());
 
@@ -72,17 +71,10 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                     String km = "{unit=Km}";
                     String miles = "{unit=Miles}";
 
-
                     if (data.equals(km))
                     {
-
-                        if (distance > 1000) {
-                            double kilometers = distance / 1000;
-                            binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
-                        } else {
-                            binding.txtLocationDistance.setText(df.format(distance) + " Meters");
-
-                        }
+                        double kilometers = distance / 1000;
+                        binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
 
                         float speed = location.getSpeed();
 
@@ -95,16 +87,8 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                     }
                     else if(data.equals(miles))
                     {
-
-
-                        double yards = distance * 1.09361;
-                        if (yards > 1760) {
-                            double distMiles = yards / 1760;
-                            binding.txtLocationDistance.setText(df.format(distMiles) + " Miles");
-                        } else {
-
-                            binding.txtLocationDistance.setText(df.format(yards) + " Yards");
-                        }
+                        double dMiles  = distance / 1609.34;
+                        binding.txtLocationDistance.setText(df.format(dMiles) + " Miles");
 
                         float speed = location.getSpeed();
 
@@ -119,15 +103,8 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                 }
                 else if (!documentSnapshot.exists())
                 {
-
-
-                    if (distance > 1000) {
-                        double kilometers = distance / 1000;
-                        binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
-                    } else {
-                        binding.txtLocationDistance.setText(df.format(distance) + " Meters");
-
-                    }
+                    double kilometers = distance / 1000;
+                    binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
 
                     float speed = location.getSpeed();
 
@@ -147,7 +124,6 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                 Log.e("Error",e.getMessage());
             }
         });
-
         return binding.getRoot();
     }
 
@@ -160,12 +136,13 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
         DocumentReference documentReference=firebaseFirestore.collection("settings").document(firebaseUser.getUid()).collection("mySettings").document(firebaseUser.getUid());
+        binding.txtLocationName.setText(marker.getTitle());
+
 
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot)
             {
-                binding.txtLocationName.setText(marker.getTitle());
                 double distance = SphericalUtil.computeDistanceBetween(new LatLng(location.getLatitude(), location.getLongitude()),
                         marker.getPosition());
 
@@ -179,17 +156,8 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
                     if (data.equals(km))
                     {
-
-
-
-
-                        if (distance > 1000) {
-                            double kilometers = distance / 1000;
-                            binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
-                        } else {
-                            binding.txtLocationDistance.setText(df.format(distance) + " Meters");
-
-                        }
+                        double kilometers = distance / 1000;
+                        binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
 
                         float speed = location.getSpeed();
 
@@ -202,18 +170,8 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                     }
                     else if(data.equals(miles))
                     {
-
-
-
-                        double yards = distance * 1.09361;
-                        if (yards > 1760) {
-                            double distMiles = yards / 1760;
-
-                            binding.txtLocationDistance.setText(df.format(distMiles) + " Miles");
-                        } else {
-
-                            binding.txtLocationDistance.setText(df.format(yards) + " Yards");
-                        }
+                        double dMiles  = distance / 1609.34;
+                        binding.txtLocationDistance.setText(df.format(dMiles) + " Miles");
 
                         float speed = location.getSpeed();
 
@@ -224,19 +182,11 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                             binding.txtLocationTime.setText("N/A");
                         }
                     }
-
                 }
                 else if (!documentSnapshot.exists())
                 {
-
-
-                    if (distance > 1000) {
-                        double kilometers = distance / 1000;
-                        binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
-                    } else {
-                        binding.txtLocationDistance.setText(df.format(distance) + " Meters");
-
-                    }
+                    double kilometers = distance / 1000;
+                    binding.txtLocationDistance.setText(df.format(kilometers) + " KM");
 
                     float speed = location.getSpeed();
 
@@ -247,7 +197,6 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                         binding.txtLocationTime.setText("N/A");
                     }
                 }
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -256,7 +205,7 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                 Log.e("Error",e.getMessage());
             }
         });
-
         return binding.getRoot();
     }
+
 }

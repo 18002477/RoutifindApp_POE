@@ -83,14 +83,12 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
+    @SuppressWarnings("deprecation")
     private void pickImage()
     {
         Intent chooseImage = new Intent(Intent.ACTION_GET_CONTENT);
         chooseImage.setType("image/*");
         startActivityForResult(Intent.createChooser(chooseImage,"Pick an image"),AllConstant.PICK_CODE);
-//        CropImage.activity()
-//                .setCropShape(CropImageView.CropShape.OVAL)
-//                .start(this);
     }
 
     @Override
@@ -111,21 +109,6 @@ public class SignUpActivity extends AppCompatActivity {
             Glide.with(this).load(imageUri).into(binding.imgPick);
         }
     }
-
-/*    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                imageUri = result.getUri();
-                Glide.with(this).load(imageUri).into(binding.imgPick);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception exception = result.getError();
-                Log.d("TAG", "onActivityResult: " + exception);
-            }
-        }
-    }*/
 
 
     private boolean areFieldReady() {
@@ -244,20 +227,6 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-/*    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                imageUri = result.getUri();
-                Glide.with(this).load(imageUri).into(binding.imgPick);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception exception = result.getError();
-                Log.d("TAG", "onActivityResult: " + exception);
-            }
-        }
-    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -78,7 +78,6 @@ public class SettingsFragment extends Fragment {
             {
                 pickImage();
             } else {
-                // Deprecated
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
                         , Manifest.permission.WRITE_EXTERNAL_STORAGE}, AllConstant.STORAGE_REQUEST_CODE);
             }
@@ -128,24 +127,18 @@ public class SettingsFragment extends Fragment {
         return binding.getRoot();
     }
 
-//    private void pickImage()
-//    {
-//        CropImage.activity()
-//                .setCropShape(CropImageView.CropShape.OVAL)
-//                .start(getContext(), this);
-//    }
 
+
+    @SuppressWarnings("deprecation")
     private void pickImage()
     {
         Intent chooseImage = new Intent(Intent.ACTION_GET_CONTENT);
         chooseImage.setType("image/*");
         startActivityForResult(Intent.createChooser(chooseImage,"Pick an image"),AllConstant.PICK_CODE);
-//        CropImage.activity()
-//                .setCropShape(CropImageView.CropShape.OVAL)
-//                .start(getContext(), this);
     }
 
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
@@ -162,7 +155,6 @@ public class SettingsFragment extends Fragment {
             }
             Glide.with(this).load(imageUri).into(binding.imgProfile);
             uploadImage(imageUri);
-            //binding.imgPick.setImageBitmap(imageToStore);
         }
     }
 
@@ -210,23 +202,6 @@ public class SettingsFragment extends Fragment {
             }
         }
     }
-
-    @SuppressWarnings("deprecation")
-/*    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == Activity.RESULT_OK) {
-                imageUri = result.getUri();
-                uploadImage(imageUri);
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception exception = result.getError();
-                Toast.makeText(getContext(), "" + exception.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
 
     private void uploadImage(Uri imageUri)
     {
