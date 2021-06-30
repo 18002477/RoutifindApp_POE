@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.spartans.routifindapp">
+    package="com.spartan.routifindapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -16,21 +16,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoutifindApp">
-        <activity android:name=".Activity.TripDetailsActivity"
+        <activity android:name="com.spartan.routifindapp.Activity.TripDetailsActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>
-        <activity android:name=".Activity.EditTripActivity"
+        <activity android:name="com.spartan.routifindapp.Activity.EditTripActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".Activity.CreateTripActivity"
+        <activity android:name="com.spartan.routifindapp.Activity.CreateTripActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".Activity.DirectionActivity"
+            android:name="com.spartan.routifindapp.Activity.DirectionActivity"
             android:theme="@style/ActionBarTheme" />
-        <activity android:name=".Activity.ForgetActivity" />
-        <activity android:name=".Activity.SignUpActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.SplashActivity">
+        <activity android:name="com.spartan.routifindapp.Activity.ForgetActivity" />
+        <activity android:name="com.spartan.routifindapp.Activity.SignUpActivity" />
+        <activity android:name="com.spartan.routifindapp.Activity.LoginActivity" />
+        <activity android:name="com.spartan.routifindapp.Activity.MainActivity" />
+        <activity android:name="com.spartan.routifindapp.Activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

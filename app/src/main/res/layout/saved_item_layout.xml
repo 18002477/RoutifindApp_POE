@@ -5,11 +5,11 @@
 
         <variable
             name="savedPlaceModel"
-            type="com.spartans.routifindapp.SavedPlaceModel" />
+            type="com.spartan.routifindapp.SavedPlaceModel" />
 
         <variable
             name="listener"
-            type="com.spartans.routifindapp.SavedLocationInterface" />
+            type="com.spartan.routifindapp.SavedLocationInterface" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

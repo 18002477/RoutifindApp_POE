@@ -4,11 +4,11 @@
     <data>
         <variable
             name="googlePlaceModel"
-            type="com.spartans.routifindapp.GooglePlaceModel" />
+            type="com.spartan.routifindapp.GooglePlaceModel" />
 
         <variable
             name="listener"
-            type="com.spartans.routifindapp.NearLocationInterface" />
+            type="com.spartan.routifindapp.NearLocationInterface" />
     </data>
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

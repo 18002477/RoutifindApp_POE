@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "793570053897",
-    "project_id": "routifindapp-62fd3",
-    "storage_bucket": "routifindapp-62fd3.appspot.com"
+    "project_number": "601866537870",
+    "project_id": "routifind-b623a",
+    "storage_bucket": "routifind-b623a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:793570053897:android:714c217b07b564aa21cdd8",
+        "mobilesdk_app_id": "1:601866537870:android:b3128daaf584cdc3d1b2df",
         "android_client_info": {
-          "package_name": "com.spartans.routifindapp"
+          "package_name": "com.spartan.routifindapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "793570053897-0aml97e1iha3t83apqu6ug292s6liapa.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.spartans.routifindapp",
-            "certificate_hash": "208de0b8464bfd8dfde38181df1cc3e509ff7ac4"
-          }
-        },
-        {
-          "client_id": "793570053897-memkme9583d60ib7uiu09vte8oteigac.apps.googleusercontent.com",
+          "client_id": "601866537870-navsucp054t2uvjcls70dd8l5dct0qck.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDmu-LAAoGtt4aig5X3JnoOhdF4uAuI8VY"
+          "current_key": "AIzaSyBFfvbI4yii4rbTFZJ7il9j1nThjRwcvg8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "793570053897-memkme9583d60ib7uiu09vte8oteigac.apps.googleusercontent.com",
+              "client_id": "601866537870-navsucp054t2uvjcls70dd8l5dct0qck.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
