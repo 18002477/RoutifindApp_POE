@@ -7,6 +7,24 @@ BRANDON PAPAYYA – 19013231
 RAYLEN PRAHLADH – 18003872
 NTHABISENG MABEA – 18015918
 
+*Demonstration Video*
+
+YouTube Link: https://www.youtube.com/watch?v=HOiDYdji-fI 
+
+
+*Release Notes*
+
+The following updates have been made since the prototype in Task 2:
+
+-Registration profile image bug fixed
+-Unit settings added to toggle between km and miles
+-Calculation of best route bug fixed
+-Estimated time and distance now displays
+-App calculates and displays route on the map
+-Trip Planner encorperated(additional feature)
+-Satellite view encorperated(additional feature)
+-Share button encorperated(additional feature)
+
 
 *Instructions*
 
